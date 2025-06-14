@@ -15,3 +15,7 @@ A Garry's Mod GUI library inspired by [shadcn/ui](https://ui.shadcn.com/) design
 ```bash
 git clone https://github.com/Garry-F/gshadcn gshadcn
 ```
+
+## Documentation
+
+Full documentation is available in the [docs folder](/docs).
