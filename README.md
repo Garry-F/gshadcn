@@ -16,6 +16,10 @@ A Garry's Mod GUI library inspired by [shadcn/ui](https://ui.shadcn.com/) design
 git clone https://github.com/Garry-F/gshadcn gshadcn
 ```
 
+## Components
+
+Available components (inspired by shadcn/ui) you can see in [docs](/docs/elements.md)
+
 ## Documentation
 
-Full documentation is available in the [docs folder](/docs).
+Full documentation is available in the [docs](/docs/docs.md).
