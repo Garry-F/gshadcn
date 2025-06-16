@@ -9,7 +9,7 @@ local fontTypes = {
     ["T"]  = " Thin"
 }
 
-local function createFont(size, fontType)
+local function createFont(fontType, size)
     surface.CreateFont("SHADCN." .. fontType .. size, {
     	font = "Geist" .. (fontTypes[fontType] and fontTypes[fontType] or ""),
     	extended = true,
@@ -17,4 +17,4 @@ local function createFont(size, fontType)
     })
 end
 
-createFont(16, "SB")
+createFont("SB", 16)
