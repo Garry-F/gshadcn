@@ -13,6 +13,14 @@ function PANEL:Init()
     self.textColor = SHADCN.GetColor(self.textColorTo)
 end
 
+function PANEL:OnMouseReleased(keyCode)
+    if keyCode == MOUSE_LEFT then
+        self:OnClick()
+    elseif keyCode == MOUSE_RIGHT then
+        self:OnRightClick()
+    end
+end
+
 function PANEL:SetTextColor(color)
     self.textColor = SHADCN.GetColor(color)
     self.textColorTo = color
@@ -25,6 +33,12 @@ function PANEL:SetText(text)
     local w, _ = surface.GetTextSize(self.text)
 
     self:SetWide(w + 32)
+end
+
+function PANEL:OnClick()
+end
+
+function PANEL:OnRightClick()
 end
 
 function PANEL:OverPaint(w, h)
