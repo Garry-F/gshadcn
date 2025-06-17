@@ -105,6 +105,9 @@ end
 function PANEL:OnClose()
 end
 
+function PANEL:OnPerformLayout()
+end
+
 function PANEL:OverPaint(w, h)
 end
 
@@ -113,6 +116,7 @@ function PANEL:PerformLayout(w, h)
 
     self.cachedW, self.cachedH = w, h
     self:CachePoly(w, h)
+    self:OnPerformLayout(w, h)
 end
 
 function PANEL:Paint(w, h)
@@ -169,4 +173,4 @@ function PANEL:PaintOver(w, h)
     render.PopFilterMag()
 end
 
-vgui.Register("SHADCN.Base.RoundedBox", PANEL)
+vgui.Register("SHADCN.Base.RoundedBox", PANEL, "EditablePanel")

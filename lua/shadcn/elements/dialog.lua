@@ -5,17 +5,17 @@ function PANEL:Init()
     self.dialog:SetRound("lg")
     self.dialog:SetAnimation("centerOpen")
     self.dialog.closeButton = self.dialog:Add("Panel")
-    self.dialog.closeButton:SetSize(16, 16)
+    self.dialog.closeButton:SetSize(8, 8)
     self.dialog.closeButton:SetCursor("hand")
     self.dialog.closeButton.colorTo = "white"
-    self.dialog.closeButton.color = SHADCN.GetColor(self.dialog.colorTo)
+    self.dialog.closeButton.color = SHADCN.GetColor(self.dialog.closeButton.colorTo)
     self.dialog.closeButton.Paint = function(s, w, h)
         local animationsEnabled = SHADCN.Config.Animations:GetBool()
         local ft
 
         if animationsEnabled then
             ft = FrameTime() * 12 * SHADCN.Config.AnimationsSpeed:GetFloat()
-            s.color = Lerp(ft, s.color, SHADCN.GetColor(s.colorTo))
+            s.color = SHADCN.LerpColor(ft, s.color, SHADCN.GetColor(s.colorTo))
         end
 
         surface.SetDrawColor(animationsEnabled and s.color or SHADCN.GetColor(s.colorTo))
@@ -25,8 +25,9 @@ function PANEL:Init()
     self.dialog.closeButton.OnMouseReleased = function(s)
         self:Close()
     end
-    self.dialog.PerformLayout = function(s, w, h)
-        s.closeButton:SetPos(w - 40, h - 40)
+    self.dialog.OnPerformLayout = function(s, w, h)
+        s.closeButton:SetPos(w - 24, 16)
+        s:SetPos(ScrW() * .5 - w * .5, ScrH() * .5 - h * .5)
     end
     self.dialog.OnClose = function()
         self:Close(true)
@@ -53,7 +54,7 @@ function PANEL:SetSize(w, h)
 end
 
 function PANEL:SetWide(w)
-    self.dialog:SetWide(w, h)
+    self.dialog:SetWide(w)
 end
 
 function PANEL:SetTall(h)

@@ -23,4 +23,4 @@ function PANEL:Paint(w, h)
     surface.DrawRect(0, 0, w, h)
 end
 
-vgui.Register("SHADCN.Base.FullScreen", PANEL)
+vgui.Register("SHADCN.Base.FullScreen", PANEL, "EditablePanel")
