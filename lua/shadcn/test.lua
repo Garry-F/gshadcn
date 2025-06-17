@@ -24,6 +24,10 @@ local function open()
         end)
         frame.alertDialog:Open()
     end
+
+    local slider = frame:Add("SHADCN.Slider")
+    slider:SetPos(128, 32)
+    slider:SetWide(96)
 end
 
 concommand.Add("_shadcn_test", open)
