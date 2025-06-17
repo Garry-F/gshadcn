@@ -17,4 +17,7 @@ local function createFont(fontType, size)
     })
 end
 
+createFont("R", 16)
 createFont("SB", 16)
+createFont("B", 18)
+createFont("B", 20)

@@ -2,7 +2,7 @@ local PANEL = {}
 
 function PANEL:Init()
     self:MakePopup()
-    self:SetBGColor("frame")
+    self:SetBGColor("black")
     self:SetRound("lg")
 end
 

@@ -3,8 +3,8 @@ local PANEL = {}
 function PANEL:Init()
     self:SetTall(36)
 
-    self:SetBGColor("button")
-    self:SetHoverColor("buttonHover")
+    self:SetBGColor("white")
+    self:SetHoverColor("whiteHover")
     self:SetDrawOutline(false)
     self:SetDrawHover(true)
 
