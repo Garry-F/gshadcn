@@ -1,5 +1,6 @@
 local PANEL = {}
 local oneVector = Vector(1, 1, 1)
+local zeroVector = Vector(0, 0, 0)
 
 local function _paint(self, w, h)
     local animations = SHADCN.Config.Animations:GetBool()
@@ -127,11 +128,11 @@ function PANEL:Paint(w, h)
         self.drawedSize = Lerp(ft, self.drawedSize, self.opened and 1 or .75)
 
         local matrix = Matrix()
-        local x, y = self:LocalToScreen(w * .5, 0)
-        local center = Vector(x, y, 0)
-        matrix:Translate(center)
+        local x, _ = self:LocalToScreen(w * .5, 0)
+        local pos = Vector(x, 0, 0)
+        matrix:Translate(pos)
         matrix:Scale(oneVector * self.drawedSize)
-        matrix:Translate(-center)
+        matrix:Translate(-pos)
 
         render.PushFilterMag(TEXFILTER.ANISOTROPIC)
 	    render.PushFilterMin(TEXFILTER.ANISOTROPIC)
@@ -143,10 +144,10 @@ function PANEL:Paint(w, h)
 
         local matrix = Matrix()
         local x, y = self:LocalToScreen(w * .5, h * .5)
-        local center = Vector(x, y, 0)
-        matrix:Translate(center)
+        local pos = Vector(x, y, 0)
+        matrix:Translate(pos)
         matrix:Scale(oneVector * self.drawedSize)
-        matrix:Translate(-center)
+        matrix:Translate(-pos)
 
         render.PushFilterMag(TEXFILTER.ANISOTROPIC)
 	    render.PushFilterMin(TEXFILTER.ANISOTROPIC)
@@ -158,6 +159,33 @@ function PANEL:Paint(w, h)
             --for i = 1, #childs do
             --    childs[i]:PaintAt(self:LocalToScreen(childs[i]:GetPos()))
             --end
+    elseif self.animationType == "leftTopCorner" and animationsEnabled then
+        self.drawedSize = Lerp(ft, self.drawedSize, self.opened and 1 or .75)
+
+        local matrix = Matrix()
+        matrix:Translate(zeroVector)
+        matrix:Scale(oneVector * self.drawedSize)
+
+        render.PushFilterMag(TEXFILTER.ANISOTROPIC)
+	    render.PushFilterMin(TEXFILTER.ANISOTROPIC)
+
+        cam.PushModelMatrix(matrix, true)
+            _paint(self, w, h)    
+    elseif self.animationType == "leftBottomCorner" and animationsEnabled then
+        self.drawedSize = Lerp(ft, self.drawedSize, self.opened and 1 or .75)
+
+        local matrix = Matrix()
+        local _, y = self:LocalToScreen(0, h)
+        local pos = Vector(0, y, 0)
+        matrix:Translate(pos)
+        matrix:Scale(oneVector * self.drawedSize)
+        matrix:Translate(-pos)
+
+        render.PushFilterMag(TEXFILTER.ANISOTROPIC)
+	    render.PushFilterMin(TEXFILTER.ANISOTROPIC)
+
+        cam.PushModelMatrix(matrix, true)
+            _paint(self, w, h)
     else
         _paint(self, w, h)
     end
