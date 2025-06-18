@@ -31,6 +31,10 @@ local function open()
     local slider = frame:Add("SHADCN.Slider")
     slider:SetPos(128, 32)
     slider:SetWide(96)
+
+    local badge = frame:Add("SHADCN.Badge")
+    badge:SetPos(128, 50)
+    badge:SetText("Badge")
 end
 
 concommand.Add("_shadcn_test", open)

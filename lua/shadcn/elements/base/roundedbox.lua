@@ -94,7 +94,7 @@ function PANEL:SetDrawOutline(bool)
 end
 
 function PANEL:SetRound(round)
-    self.round = SHADCN.Round(round)
+    self.round = SHADCN.Round(round)-0.5
     self:CachePoly(self:GetWide(), self:GetTall())
 end
 
