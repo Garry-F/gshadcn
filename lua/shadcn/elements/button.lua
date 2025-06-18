@@ -3,6 +3,7 @@ local PANEL = {}
 function PANEL:Init()
     self:SetTall(36)
 
+    self:SetRound("lg")
     self:SetBGColor("white")
     self:SetHoverColor("whiteHover")
     self:SetDrawOutline(false)

@@ -10,6 +10,13 @@ local function open()
         if !IsValid(s.alertDialog) then return end
         s.alertDialog:Close()
     end
+
+    local button = frame:Add("SHADCN.Button")
+    button:SetPos(32, 128)
+    button:SetText("Close")
+    button.OnClick = function(s)
+        frame:Close()
+    end
      
     local button = frame:Add("SHADCN.Button")
     button:SetPos(32, 32)
@@ -35,6 +42,11 @@ local function open()
     local badge = frame:Add("SHADCN.Badge")
     badge:SetPos(128, 50)
     badge:SetText("Badge")
+
+    local avatar = frame:Add("SHADCN.Avatar")
+    avatar:SetPos(32, 72)
+    avatar:SetSize(32, 32)
+    avatar:SetPlayer(LocalPlayer(), 32)
 end
 
 concommand.Add("_shadcn_test", open)
